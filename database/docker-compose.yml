@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  mysql:
+    container_name: mysqldb
+    image: mysql:5.7
+    restart: always
+    environment:
+        MYSQL_ROOT_PASSWORD: $MYSQL_USER
+        MYSQL_DATABASE: $MYSQL_DB
+        MYSQL_USER: $MYSQL_PASS
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql_data/:/docker-entrypoint-initdb.d
+    env_file:
+      - .env
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    ports:
+      - 8080:80
+    links:
+      - mysql:db
+
+volumes:
+  mysql_data: 
