@@ -16,8 +16,8 @@ pro = Process()
 # Define la ruta con la que se ingresara desde el browser
 @app.route('/')
 def index():
-    west = db.get_all_zone_teams(Team,1)
-    east = db.get_all_zone_teams(Team,2)
+    west = db.get_all_zone_teams(1)
+    east = db.get_all_zone_teams(2)
 
     return render_template('index.html',east=east,west=west)
 
