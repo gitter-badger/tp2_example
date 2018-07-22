@@ -11,6 +11,15 @@ class Team(Base):
     id=Column(Integer, primary_key=True)
     name=Column('name', String(32))
     logo=Column('logo', BLOB)
+    id_zone=Column(Integer, ForeignKey('zone.id'))
+
+    def serialize(self):
+       """Return object data in easily serializeable format"""
+       return {
+           'id'  : self.id,
+           'name': self.name,
+           'logo': self.logo
+       }
 
 class Match(Base):
     __tablename__ = 'match'
@@ -25,3 +34,7 @@ class Result(Base):
     id_team=Column(Integer, ForeignKey('team.id'))
     score=Column(Integer, default=0)
 
+class Zone(Base):
+    __tablename__ = 'zone'
+    id=Column(Integer, primary_key=True)
+    name=Column('name', String(4))

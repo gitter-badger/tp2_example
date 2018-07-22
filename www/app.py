@@ -5,6 +5,7 @@ from flask import Flask
 from flask import render_template
 from flask import request
 from models import Team
+from sqlalchemy.sql import select
 import datetime
 import os
   
@@ -15,7 +16,12 @@ pro = Process()
 # Define la ruta con la que se ingresara desde el browser
 @app.route('/')
 def index():
-    return render_template('form.html')
+    west = db.get_all_zone_teams(Team,1)
+    east = db.get_all_zone_teams(Team,2)
+
+    return render_template('index.html',east=east,west=west)
+
+
 
 @app.route('/start_match', methods = ["GET"])
 def start_match():
@@ -37,4 +43,5 @@ def stop_match():
 
 if __name__ == "__main__":
     # Define HOST y PUERTO para accerder
-    app.run(host='localhost', port=8888)
+    app.run(host='0.0.0.0', port=8888)
+

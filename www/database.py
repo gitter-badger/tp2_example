@@ -1,17 +1,19 @@
 from models import Match
 from models import Result
+from models import Team
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
+import json
 import os
 
 class Database(object):
     session = None
     db_user = os.getenv("DB_USER") if os.getenv("DB_USER") != None else "example"
     db_pass = os.getenv("DB_PASS") if os.getenv("DB_PASS") != None else "example"
-    db_host = os.getenv("DB_HOST") if os.getenv("DB_HOST") != None else "localhost"
+    db_host = os.getenv("DB_HOST") if os.getenv("DB_HOST") != None else "db"
     db_name = os.getenv("DB_NAME") if os.getenv("DB_NAME") != None else "tp2"
     db_port = os.getenv("DB_PORT") if os.getenv("DB_PORT") != None else "3306"
     Base = declarative_base()
@@ -51,6 +53,18 @@ class Database(object):
         session.commit()
         return m.id
     
+    def get_all_zone_teams(self, zone):
+        """Return all teams from a specific zone
+        
+        Arguments:
+            zone {[int]} -- [The zone. 1 is for WEST | 2 is for EAST]
+        
+        Returns:
+            [array] -- [return a array with the id, name and logo of the teams ]
+        """
+
+        result = self.get_session().query(Team).filter_by(id_zone = zone)
+        return [r.serialize() for r in result]
         
 
 

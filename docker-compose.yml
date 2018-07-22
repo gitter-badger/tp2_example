@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  mysql:
+  db:
     container_name: mysqldb
     image: mysql:5.7
     restart: always
@@ -22,15 +22,17 @@ services:
     ports:
       - 8080:80
     links:
-      - mysql:db
-  webserver:
+      - db:db
+  www:
     container_name: pythonserver
-    build: ./webserver
+    build: ./www
     restart: always
     links:
-      - mysql:db
+      - db
+    depends_on:
+      - db
     volumes:
-      - "./webserver/:/webserver/"
+      - "./www/:/www/"
     ports:
       - 8888:8888
 
