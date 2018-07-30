@@ -1,4 +1,5 @@
 import datetime
+import base64
 
 from sqlalchemy.schema import Column, ForeignKey
 from sqlalchemy.types import Integer, String, BLOB, Date
@@ -18,7 +19,7 @@ class Team(Base):
        return {
            'id'  : self.id,
            'name': self.name,
-           'logo': self.logo
+           'logo': base64.b64encode(self.logo).decode("utf-8", "ignore")
        }
 
 class Match(Base):
