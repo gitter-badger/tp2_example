@@ -28,6 +28,14 @@ class Match(Base):
     date=Column('date', Date, default=datetime.datetime.utcnow)
     place=Column('place', String(32))
 
+    def serialize(self):
+       """Return object data in easily serializeable format"""
+       return {
+           'id'  : self.id,
+           'date': self.date,
+           'place': self.place
+       }
+
 class Result(Base):
     __tablename__ = 'result'
     id=Column(Integer, primary_key=True)
