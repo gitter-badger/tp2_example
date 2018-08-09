@@ -1,12 +1,23 @@
-
 from database import Database
 from models import Result
 
 import random
 import time
+import signal
 import sys
 
+class GracefulKiller:
+    kill_now = False
+    def __init__(self):
+        signal.signal(signal.SIGINT, self.exit_gracefully)
+        signal.signal(signal.SIGTERM, self.exit_gracefully)
+
+    def exit_gracefully(self, signum, frame):
+        self.kill_now = True
+
+
 def main(results, session):
+    killer = GracefulKiller()
     while(1):
         t = results[random.randint(0,1)]
         t.score += random.randint(0,3)
@@ -14,6 +25,9 @@ def main(results, session):
         session.commit()
         print("Team %s | New score: %s" % (t.id_team, t.score))
         time.sleep(2)
+        if killer.kill_now:
+            session.close()
+            break
 
 if __name__ == '__main__':
     if (len(sys.argv) != 4) or (sys.argv[1] == sys.argv[2]):
