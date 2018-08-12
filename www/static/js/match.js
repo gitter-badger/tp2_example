@@ -13,6 +13,12 @@ $(document).ready(function(){
     start_get_score();
 });
 
+$(window).on("unload", function(e) {
+    $.get("/match/stop/" + id_match, function(data){
+        console.log(data);
+    });
+});
+
 var control_score;
 
 function start_get_score(){
