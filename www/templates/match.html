@@ -5,13 +5,13 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="shortcut icon" type="image/png" href="/static/img/nba.png"/>
+    <link rel="shortcut icon" type="image/png" href="/static/img/nba.png" />
     <title>NBA</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/">
     <link rel="stylesheet" href="/static/css/match.css">
-    <link rel="stylesheet" href="/static/css/default.css">        
+    <link rel="stylesheet" href="/static/css/default.css">
 </head>
 
 <body>
@@ -57,19 +57,17 @@
                 <div class="chrono" id="horas">00</div>
                 <div class="chrono" id="minutos">:00</div>
                 <div class="chrono" id="segundos">:00</div>
-                <div class="chrono" id="centesimas">:00</div>                    
+                <div class="chrono" id="centesimas">:00</div>
             </div>
         </div>
         <div class="row">
             <div class="col-md">
                 <div class="jumbotron custom">
                     <div class="text-center">
-                        <h1 class="display-4">Eastern Conference</h1>                    
-                        <h5 class="" id="name-{{id_team_west}}"></h5>
-                        <div class="div-logo">
-                        <img id="logo-{{id_team_west}}" class="logo" src=""/>                          
-                        </div>
-                        <h1 class="" id="score-{{id_team_west}}">0</h1>                        
+                        <h1 class="display-4">Eastern Conference</h1>
+                        <h5 class="" id="name-{{id_team_east}}"></h5>
+                        <img id="logo-{{id_team_east}}" class="logo" src="" />
+                        <h1 class="" id="score-{{id_team_east}}">0</h1>
                     </div>
                 </div>
             </div>
@@ -77,16 +75,16 @@
                 <div class="jumbotron custom">
                     <div class="text-center">
                         <h1 class="display-4">Western Conference</h1>
-                        <h5 class="" id="name-{{id_team_east}}"></h5>
-                        <img id="logo-{{id_team_east}}" class="logo" src=""/>                     
-                        <h1 class="" id="score-{{id_team_east}}">0</h1>                        
+                        <h5 class="" id="name-{{id_team_west}}"></h5>
+                        <img id="logo-{{id_team_west}}" class="logo" src="" />
+                        <h1 class="" id="score-{{id_team_west}}">0</h1>
                     </div>
                 </div>
-            </div>            
+            </div>
         </div>
-        
-        <div class="row stop">            
-            <input type="button" class="btn btn-success" id="stop-match" value="STOP Match"/>
+
+        <div class="row stop">
+            <input type="button" class="btn btn-success" id="stop-match" value="STOP Match" />
             <a href="/" class="btn btn-success" id="new-match" style="display:none;">New Match</a>
         </div>
 
@@ -102,8 +100,9 @@
     <script type="text/javascript">
         var id_match = "{{ id_match }}";
         var id_team_west = "{{ id_team_west }}";
-        var id_team_east = "{{ id_team_east }}"        
+        var id_team_east = "{{ id_team_east }}"
     </script>
 
 </body>
+
 </html>
