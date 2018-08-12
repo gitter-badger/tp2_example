@@ -84,10 +84,26 @@
         </div>
 
         <div class="row stop">
-            <input type="button" class="btn btn-success" id="stop-match" value="STOP Match" />
-            <a href="/" class="btn btn-success" id="new-match" style="display:none;">New Match</a>
+            <input type="button" class="btn btn-success" id="stop-match" value="STOP Match" />            
         </div>
 
+    </div>
+
+
+    <div id="modal-result" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-custom">
+                <div class="modal-header">
+                    <h5 class="modal-title">Result of match</h5>
+                </div>
+                <div class="modal-body">
+                    <h5 id="text-result" ></h5>                    
+                </div>
+                <div class="modal-footer">
+                    <a role="button" href="/" class="btn btn-success">OK</a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Optional JavaScript -->
@@ -100,9 +116,8 @@
     <script type="text/javascript">
         var id_match = "{{ id_match }}";
         var id_team_west = "{{ id_team_west }}";
-        var id_team_east = "{{ id_team_east }}"
+        var id_team_east = "{{ id_team_east }}";
     </script>
-
 </body>
 
 </html>

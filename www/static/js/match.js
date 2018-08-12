@@ -11,6 +11,8 @@ $(document).ready(function() {
     });
 
     start_get_score();
+
+    $('#modal-result').modal({backdrop: 'static', keyboard: false, show:false});
 });
 
 $(window).on("unload", function(e) {
@@ -37,14 +39,18 @@ function score() {
     });
 }
 
-$("#stop-match").click(function() {
+$("#stop-match").click(function() {    
     stop_get_score();
-    $('#stop-match').css('display', 'none');
-    $('#new-match').css('display', 'block');
-
     $.get("/match/stop/" + id_match, function(data) {
         console.log(data);
-    }).done(function() {
-        score();
+    }).done(function() {        
+        $.get("/result/match/" + id_match, function(data) {
+            $("#score-" + data[0].id_team).html(data[0].score);
+            $("#score-" + data[1].id_team).html(data[1].score);
+            var id_team_result = (data[0].score > data[1].score) ? data[0].id_team : (data[1].score > data[0].score) ? data[1].id_team : null;
+            var text = (id_team_result == null) ? "The match ended tied" : "The winner is " + $('#name-' + id_team_result).html();
+            $("#text-result").html(text);
+            $('#modal-result').modal('show');
+        });
     });
 });

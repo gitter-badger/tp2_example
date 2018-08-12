@@ -31,6 +31,21 @@
     height: 100px;
 }
 
+.modal-custom {
+    background-image: url(../img/background_modal.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+}
+
+.modal-custom > .modal-header{
+    border-bottom: 1px solid #1f1f1f !important;
+}
+
+.modal-custom > .modal-footer{
+    border-top: 1px solid #1f1f1f !important;
+}
+
 @media only screen and (max-width: 767px) {
     .myimage{
         top: 410px;
