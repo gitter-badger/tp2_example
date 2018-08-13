@@ -6,7 +6,6 @@ from flask import jsonify
 from flask import render_template
 from flask import request
 from models import Team
-from sqlalchemy.sql import select
 import datetime
 import os
   
@@ -19,11 +18,11 @@ pro = Process()
 def index():
     west = db.get_all_zone_teams(1)
     east = db.get_all_zone_teams(2)
-
     return render_template('index.html',east=east,west=west)
 
 @app.route('/match', methods = ["POST"])
 def start_match():
+    
     # If there is a process running, return to index()
     if pro.is_running():
         return index()
