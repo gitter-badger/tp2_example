@@ -1,5 +1,7 @@
 # NBA real-time project
 
+[![Join the chat at https://gitter.im/tp2_example/Lobby](https://badges.gitter.im/tp2_example/Lobby.svg)](https://gitter.im/tp2_example/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## Description
 
 It's a real-time project that emulate a real game.
